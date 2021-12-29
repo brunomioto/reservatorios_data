@@ -12,6 +12,9 @@ jobs:
 
       - name: Install packages
         run: |
+          install.packages("dplyr")
+          install.packages("magrittr")
+          install.packages("purrr")
           install.packages("remotes")
           remotes::install_github("brunomioto/reservatoriosBR")          
         shell: Rscript {0}
