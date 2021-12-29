@@ -3,8 +3,7 @@ library(dplyr)
 library(magrittr)
 library(purrr)
 
-testecsv <- read.csv("https://raw.githubusercontent.com/brunomioto/reservatorios_data/master/dados/reservatorios.csv") %>% 
-  select(-1)
+testecsv <- read.csv("https://raw.githubusercontent.com/brunomioto/reservatorios_data/master/dados/reservatorios.csv")
 
 reservatorios_dif <- reservatoriosBR::tabela_reservatorios() %>% 
   distinct(codigo) %>% 
