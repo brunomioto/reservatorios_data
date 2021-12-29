@@ -20,9 +20,9 @@ dados_reservatorios <- purrr::map_dfr(reservatorios_dif$codigo,
                                       busca_res)
 
 
-new_data <- rbind(testecsv, dados_reservatorios)
+#new_data <- rbind(testecsv, dados_reservatorios)
 
-new_data2 <- new_data %>% 
+new_data2 <- dados_reservatorios %>% 
   distinct() %>% 
   arrange(codigo_reservatorio, data)
 
