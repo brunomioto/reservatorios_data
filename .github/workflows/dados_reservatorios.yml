@@ -16,7 +16,7 @@ jobs:
           install.packages("magrittr")
           install.packages("purrr")
           install.packages("remotes")
-          remotes::install_github("brunomioto/reservatoriosBR")          
+          remotes::install_github("brunomioto/reservatoriosBR", upgrade = "never")          
         shell: Rscript {0}
         
       - name: Get data and upload file
