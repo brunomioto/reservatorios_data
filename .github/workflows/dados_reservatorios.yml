@@ -1,0 +1,28 @@
+name: dados_reservatorios
+
+on: workflow_dispatch
+jobs:
+  busca_dados:
+    runs-on: macOS-latest
+    env:
+      GITHUB_PAT: ${{ secrets.PAT_GITHUB }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: r-lib/actions/setup-r@master
+
+      - name: Install packages
+        run: |
+          install.packages("remotes")
+          remotes::install_github("brunomioto/reservatoriosBR")          
+        shell: Rscript {0}
+        
+      - name: Get data and upload file
+        run: Rscript get_data.R
+        
+      - name: Commit results
+        run: |-
+          git config user.name "Automated"
+          git config user.email "actions@users.noreply.github.com"
+          git add dados/reservatorios.csv
+          git commit -m "Latest data: ${timestamp}" || exit 0
+          git push
