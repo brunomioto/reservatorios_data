@@ -6,12 +6,13 @@ library(purrr)
 testecsv <- read.csv("https://raw.githubusercontent.com/brunomioto/reservatorios_data/master/dados/reservatorios.csv")
 
 reservatorios_dif <- reservatoriosBR::tabela_reservatorios() %>% 
+  filter(sistema == "sin") %>% 
   distinct(codigo) %>% 
-  tail()
+  head()
 
 busca_res <- function(codigo_reservatorio){
   
-  reservatoriosBR::reservatorio_sin(codigo_reservatorio, data_inicial = "2021-02-01", data_final = "2021-02-02")
+  reservatoriosBR::reservatorio_sin(codigo_reservatorio, data_inicial = "2021-02-02", data_final = "2021-02-04")
   
 }
 
