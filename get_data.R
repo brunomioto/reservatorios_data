@@ -2,19 +2,17 @@ library(reservatoriosBR)
 library(dplyr)
 library(magrittr)
 library(purrr)
-library(readr)
-
-reservatorios_dif <- reservatoriosBR::tabela_reservatorios() %>% 
-  distinct(codigo) %>% 
-  head()
 
 testecsv <- read.csv("https://raw.githubusercontent.com/brunomioto/reservatorios_data/master/dados/reservatorios.csv") %>% 
   select(-1)
 
+reservatorios_dif <- reservatoriosBR::tabela_reservatorios() %>% 
+  distinct(codigo) %>% 
+  tail()
+
 busca_res <- function(codigo_reservatorio){
   
-  reservatoriosBR::reservatorio_sin(codigo_reservatorio, data_inicial = "2021-02-01", data_final = "2021-02-31")
-  
+  reservatoriosBR::reservatorio_sin(codigo_reservatorio, data_inicial = "2021-02-01", data_final = "2021-02-02")
   
 }
 
