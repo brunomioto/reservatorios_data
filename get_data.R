@@ -7,12 +7,11 @@ testecsv <- read.csv("https://raw.githubusercontent.com/brunomioto/reservatorios
 
 reservatorios_dif <- reservatoriosBR::tabela_reservatorios() %>% 
   filter(sistema == "sin") %>% 
-  distinct(codigo) %>% 
-  head()
+  distinct(codigo)
 
 busca_res <- function(codigo_reservatorio){
   
-  reservatoriosBR::reservatorio_sin(codigo_reservatorio, data_inicial = "2021-02-02", data_final = "2021-02-04")
+  reservatoriosBR::reservatorio_sin(codigo_reservatorio, data_inicial = "2021-02-04", data_final = "2021-02-06")
   
 }
 
@@ -20,9 +19,9 @@ dados_reservatorios <- purrr::map_dfr(reservatorios_dif$codigo,
                                       busca_res)
 
 
-#new_data <- rbind(testecsv, dados_reservatorios)
+new_data <- rbind(testecsv, dados_reservatorios)
 
-new_data2 <- dados_reservatorios %>% 
+new_data2 <- new_data %>% 
   distinct() %>% 
   arrange(codigo_reservatorio, data)
 
