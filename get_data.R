@@ -2,13 +2,14 @@ library(reservatoriosBR)
 library(dplyr)
 library(magrittr)
 library(purrr)
-
+library(readr)
 
 reservatorios_dif <- reservatoriosBR::tabela_reservatorios() %>% 
   distinct(codigo) %>% 
   head()
 
-testecsv <- read.csv("https://raw.githubusercontent.com/brunomioto/reservatorios_data/master/dados/reservatorios.csv")
+testecsv <- read.csv("https://raw.githubusercontent.com/brunomioto/reservatorios_data/master/dados/reservatorios.csv") %>% 
+  select(-1)
 
 busca_res <- function(codigo_reservatorio){
   
@@ -28,4 +29,4 @@ new_data2 <- new_data %>%
   arrange(codigo_reservatorio, data)
 
 # salvar a versao csv
-write.csv(new_data2, "dados/reservatorios.csv")
+write.csv(new_data2, "dados/reservatorios.csv", row.names = FALSE)
