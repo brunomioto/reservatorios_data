@@ -14,11 +14,10 @@ glimpse(testecsv)
 reservatorios_dif <- reservatoriosBR::tabela_reservatorios() %>% 
   filter(sistema == "sin") %>% 
   distinct(codigo) %>% 
-  head()
 
 busca_res <- function(codigo_reservatorio){
   
-  reservatoriosBR::reservatorio_sin(codigo_reservatorio, data_inicial = "2021-02-04", data_final = "2021-02-06")
+  reservatoriosBR::reservatorio_sin(codigo_reservatorio, data_inicial = "2000-01-01", data_final = "2000-01-02")
   
 }
 
