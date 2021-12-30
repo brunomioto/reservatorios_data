@@ -13,7 +13,7 @@ glimpse(testecsv)
 
 reservatorios_dif <- reservatoriosBR::tabela_reservatorios() %>% 
   filter(sistema == "sin") %>% 
-  distinct(codigo) %>% 
+  distinct(codigo)
 
 busca_res <- function(codigo_reservatorio){
   
