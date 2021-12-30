@@ -9,15 +9,13 @@ testecsv <- read_csv("https://raw.githubusercontent.com/brunomioto/reservatorios
                        data = col_date()
                      ))
 
-glimpse(testecsv)
-
 reservatorios_dif <- reservatoriosBR::tabela_reservatorios() %>% 
-  filter(sistema == "sin") %>% 
+  filter(sistema == "sin") %>%
   distinct(codigo)
 
 busca_res <- function(codigo_reservatorio){
   
-  reservatoriosBR::reservatorio_sin(codigo_reservatorio, data_inicial = "2010-12-31", data_final = "2021-12-01")
+  reservatoriosBR::reservatorio_sin(codigo_reservatorio, data_inicial = "2021-12-01", data_final = Sys.Date())
   
 }
 
