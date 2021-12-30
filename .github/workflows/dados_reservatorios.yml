@@ -1,6 +1,9 @@
 name: dados_reservatorios
 
-on: workflow_dispatch
+on:
+  schedule:
+  - cron: '0 5 * * *'
+  
 jobs:
   busca_dados:
     runs-on: macOS-latest
