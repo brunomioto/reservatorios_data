@@ -4,7 +4,7 @@ library(magrittr)
 library(purrr)
 library(readr)
 
-testecsv <- read_csv("https://raw.githubusercontent.com/brunomioto/reservatorios_data/master/dados/reservatorios.csv",
+data_csv <- read_csv("https://raw.githubusercontent.com/brunomioto/reservatorios_data/master/dados/reservatorios.csv",
                      col_types =  cols(
                        data = col_date()
                      ))
@@ -15,14 +15,14 @@ reservatorios_dif <- reservatoriosBR::tabela_reservatorios() %>%
 
 busca_res <- function(codigo_reservatorio){
   
-  reservatoriosBR::reservatorio_sin(codigo_reservatorio, data_inicial = "2021-12-01", data_final = Sys.Date())
+  reservatoriosBR::reservatorio_sin(codigo_reservatorio, data_inicial = Sys.Date()-2, data_final = Sys.Date())
   
 }
 
 dados_reservatorios <- purrr::map_dfr(reservatorios_dif$codigo,
                                       busca_res)
 
-new_data <- rbind(testecsv, dados_reservatorios)
+new_data <- rbind(data_csv, dados_reservatorios)
 
 new_data2 <- new_data %>% 
   distinct() %>% 
