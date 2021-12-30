@@ -17,7 +17,7 @@ reservatorios_dif <- reservatoriosBR::tabela_reservatorios() %>%
 
 busca_res <- function(codigo_reservatorio){
   
-  reservatoriosBR::reservatorio_sin(codigo_reservatorio, data_inicial = "2000-12-31", data_final = "2010-12-31")
+  reservatoriosBR::reservatorio_sin(codigo_reservatorio, data_inicial = "2010-12-31", data_final = "2021-12-29")
   
 }
 
