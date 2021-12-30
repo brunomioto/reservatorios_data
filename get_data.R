@@ -17,13 +17,12 @@ reservatorios_dif <- reservatoriosBR::tabela_reservatorios() %>%
 
 busca_res <- function(codigo_reservatorio){
   
-  reservatoriosBR::reservatorio_sin(codigo_reservatorio, data_inicial = "2010-12-31", data_final = "2021-12-29")
+  reservatoriosBR::reservatorio_sin(codigo_reservatorio, data_inicial = "2010-12-31", data_final = "2021-12-01")
   
 }
 
 dados_reservatorios <- purrr::map_dfr(reservatorios_dif$codigo,
                                       busca_res)
-
 
 new_data <- rbind(testecsv, dados_reservatorios)
 
