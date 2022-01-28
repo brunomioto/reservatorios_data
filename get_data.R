@@ -3,6 +3,7 @@ library(dplyr)
 library(magrittr)
 library(purrr)
 library(readr)
+library(tidyr)
 
 data_csv <- read_csv("https://raw.githubusercontent.com/brunomioto/reservatorios_data/master/dados/reservatorios.csv",
                      col_types =  cols(
@@ -26,6 +27,7 @@ new_data <- rbind(data_csv, dados_reservatorios)
 
 new_data2 <- new_data %>% 
   distinct() %>% 
+  drop_na(cota_m) %>%
   arrange(codigo_reservatorio, data)
 
 new_data2$data <- as.Date(new_data2$data)
