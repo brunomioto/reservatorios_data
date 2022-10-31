@@ -16,7 +16,7 @@ reservatorios_dif <- reservatoriosBR::tabela_reservatorios() %>%
 
 busca_res <- function(codigo_reservatorio){
   
-  reservatoriosBR::reservatorio_sin(codigo_reservatorio, data_inicial = Sys.Date()-3, data_final = Sys.Date())
+  reservatoriosBR::reservatorio_sin(codigo_reservatorio, data_inicial = Sys.Date()-7, data_final = Sys.Date())
   
 }
 
