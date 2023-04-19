@@ -8,7 +8,7 @@ jobs:
   busca_dados:
     runs-on: macOS-latest
     env:
-      GITHUB_PAT: ${{ secrets.PAT_GITHUB }}
+      GITHUB_PAT: ${{ secrets.GITHUB_R_TOKEN }}
     steps:
       - uses: actions/checkout@v2
       - uses: r-lib/actions/setup-r@v2
